@@ -92,6 +92,11 @@ app.get('/UploadForm.html', (req, res) => {
         </body>
         </html>
     `;
+    // Зберігаємо форму у файл
+    fs.writeFileSync(path.join(__dirname, 'UploadForm.html'), formHTML);
+
+    // Відправляємо HTML-контент як відповідь
+    res.sendFile(path.join(__dirname, 'UploadForm.html'));
     res.status(200).send(formHTML);
 });
 
@@ -100,5 +105,4 @@ app.listen(port, host, () => {
 console.log (`Сервер запущено за адресою http://${host}:${port}`)
 console.log (`Кеш зберішається у директорії ${cache}`)
 });
-
 
